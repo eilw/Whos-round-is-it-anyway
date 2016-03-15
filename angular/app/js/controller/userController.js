@@ -1,4 +1,4 @@
-paymentApp.controller('UserController', function(){
+paymentApp.controller('UserController', ['userDataService', function(userDataService){
 
   var self = this;
   self.userName = "";
@@ -12,12 +12,10 @@ paymentApp.controller('UserController', function(){
 
   self.logIn = function(){
     self.loggedInStatus = true;
-  }
+  };
 
 
 
 
 
-
-
-});
+}]);
