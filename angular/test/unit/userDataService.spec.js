@@ -9,20 +9,21 @@ describe('service: userDataService', function() {
   }));
 
   beforeEach(inject(function($httpBackend) {
+      var user = {username: 'Test', email: 'test@email.com', password: 'password'};
       httpBackend = $httpBackend;
       httpBackend
-        .expectPOST("/users")
+        .when('POST', '/users', user)
         .respond(
-          { status:200  }
+          { status: 200  }
         );
     }));
 
   it('responds to query', function() {
-    var user = [{username: 'Test', email: 'test@email.com', password: 'password'}]
+    var user = {username: 'Test', email: 'test@email.com', password: 'password'};
     userData.sendUser(user)
     .then(function(response){
-    expect(response.status).toEqual(200);
+      expect(response.status).toEqual(200);
+    });
+    httpBackend.flush();
   });
-  httpBackend.flush();
-});
 });

@@ -11,8 +11,12 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   };
 
   self.signUp = function(){
-    userDataService.sendUser();
+    var user = {userName: self.userName, email: self.email, password: self.password }
+    userDataService.sendUser(user).then(function(){
+    });
     self.loggedInStatus = true;
+
+
   };
 
 
