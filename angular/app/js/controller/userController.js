@@ -10,7 +10,8 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
     return self.loggedInStatus;
   };
 
-  self.logIn = function(){
+  self.signUp = function(){
+    userDataService.sendUser();
     self.loggedInStatus = true;
   };
 

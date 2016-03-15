@@ -1,14 +1,13 @@
 paymentApp.service('userDataService', ['$http', function($http) {
-  var queryUrl = '/users';
-    return {
-      query: function(user) {
-        return $http({
-          url: queryUrl,
-          method: 'POST',
-          params: {
-            'q': user
-          }
-        });
+  var self = this;
+  self.sendUser = function(user) {
+    var queryUrl = '/users';
+    return $http({
+      url: queryUrl,
+      method: 'POST',
+      params: {
+        'q': user
       }
-    };
+    });
+  }
 }]);

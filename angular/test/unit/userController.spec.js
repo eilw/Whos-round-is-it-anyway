@@ -14,7 +14,7 @@ describe('UserController', function() {
     });
 
     it("logging in changes the login status",function(){
-      ctrl.logIn()
+      ctrl.signUp()
       expect(ctrl.isLoggedIn()).toEqual(true);
     });
 

@@ -18,7 +18,8 @@ describe('service: userDataService', function() {
     }));
 
   it('responds to query', function() {
-    userData.query()
+    var user = [{username: 'Test', email: 'test@email.com', password: 'password'}]
+    userData.sendUser(user)
     .then(function(response){
     expect(response.status).toEqual(200);
   });
