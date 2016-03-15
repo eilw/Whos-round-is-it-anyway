@@ -1,3 +1,8 @@
 angular/app/bower_components
 node_modules
 npm-debug.log
+
+
+rails/payment_app/.bundle
+rails/payment_app/log/*
+rails/payment_app/tmp
