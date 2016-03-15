@@ -11,6 +11,9 @@ describe("UserSignUp", function() {
     submit.click();
     var welcome = element(by.css('h2'));
     expect(welcome.getText()).toEqual('Welcome, Test Name');
+
+    var userPassword = element(by.model('userCtrl.password'));
+    expect(userPassword.isDisplayed()).toBeFalsy();
   });
 
 
