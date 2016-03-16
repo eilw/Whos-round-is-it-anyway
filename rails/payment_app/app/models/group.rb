@@ -10,9 +10,7 @@ class Group < ActiveRecord::Base
     payer = users.sample
     users.each do |user|
       total = user.payments.sum(:amount)
-      if total < payer.payments.sum(:amount)
-        payer = user
-      end
+        payer = user if total < payer.payments.sum(:amount)
     end
     payer
   end

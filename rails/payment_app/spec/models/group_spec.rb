@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Group, type: :model do
   it { is_expected.to have_and_belong_to_many(:users) }
-  it {is_expected.to have_many(:payments).through(:users)}
+  it { is_expected.to have_many(:payments).through(:users) }
 
 
   describe '#current_payer' do
@@ -18,7 +18,6 @@ describe Group, type: :model do
       expect(group.current_payer.id).to be user3.id
       user3.payments.create(amount: 200)
       expect(group.current_payer.id).to be user2.id
-
     end
   end
 end

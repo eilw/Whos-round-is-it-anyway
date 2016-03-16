@@ -9,4 +9,14 @@ class GroupsController < ApplicationController
     render json: @group.as_json(include: :users), status: 201
   end
 
+  def show
+    @group = Group.find(params[:id])
+    render json: @group.as_json(include: :users)
+  end
+
+  def payer
+    @group = Group.find(params[:id])
+    @user = @group.current_payer
+    render json: @user.as_json(only: [:id, :email, :username])
+  end
 end
