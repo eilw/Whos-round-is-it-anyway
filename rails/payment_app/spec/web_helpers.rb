@@ -19,3 +19,13 @@ def add_group
           }}
   post '/groups', group, headers
 end
+
+def submit_payment
+  register_user
+  headers = {'CONTENT TYPE' => 'application/json'}
+  payment = {payment: {
+            amount: 100.23,
+            user_id: 4
+          }}
+  post '/groups/1/payments', payment, headers
+end
