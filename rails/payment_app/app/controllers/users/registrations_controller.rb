@@ -10,14 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username)
   end
 
   def create
-    p params
-    p user_params
     User.create(user_params)
-    redirect_to '/index'
+    @user = current_user
+    render json: @user.as_json(only: [:id, :email, :username]), status: 201
   end
 
   # GET /resource/edit
