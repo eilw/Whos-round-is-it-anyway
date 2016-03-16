@@ -7,12 +7,13 @@ describe("UserSignUp", function() {
     userEmail.sendKeys('test@email.com');
     var userPassword = element(by.model('userCtrl.password'));
     userPassword.sendKeys('password');
+    var userPasswordConfirmation = element(by.model('userCtrl.passwordConfirmation'));
+    userPasswordConfirmation.sendKeys('password');
     var submit = $('#signUp');
     submit.click();
     var welcome = element(by.css('h2'));
     expect(welcome.getText()).toEqual('Welcome, Test Name');
 
-    var userPassword = element(by.model('userCtrl.password'));
     expect(userPassword.isDisplayed()).toBeFalsy();
   });
 

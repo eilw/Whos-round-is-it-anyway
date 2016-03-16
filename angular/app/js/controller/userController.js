@@ -4,6 +4,7 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.userName = "";
   self.email ="";
   self.password = "";
+  self.passwordConfirmation = "";
   self.loggedInStatus = false;
 
   self.isLoggedIn = function(){
@@ -11,10 +12,11 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   };
 
   self.signUp = function(){
-    var user = {userName: self.userName, email: self.email, password: self.password }
+    var user = {userName: self.userName, email: self.email, password: self.password };
     userDataService.sendUser(user).then(function(){
+      self.loggedInStatus = true;
     });
-    self.loggedInStatus = true;
+
 
 
   };
