@@ -23,12 +23,13 @@ end
 
 def submit_payment
   register_user
+  Group.create(name: 'groupname', user_ids: [4])
   headers = {'CONTENT TYPE' => 'application/json'}
   payment = {payment: {
             amount: 100.23,
             user_id: 4
           }}
-  post '/groups/1/payments', payment, headers
+  post '/groups/2/payments', payment, headers
 end
 
 def sign_in(email="test@test.com", password="12345678")

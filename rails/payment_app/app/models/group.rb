@@ -6,4 +6,14 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :users
 
+  def current_payer
+    payer = users.sample
+    users.each do |user|
+      total = user.payments.sum(:amount)
+      if total < payer.payments.sum(:amount)
+        payer = user
+      end
+    end
+    payer
+  end
 end
