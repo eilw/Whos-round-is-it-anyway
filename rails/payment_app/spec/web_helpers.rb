@@ -29,3 +29,12 @@ def submit_payment
           }}
   post '/groups/1/payments', payment, headers
 end
+
+def sign_in(email="test@test.com", password="12345678")
+  headers = {'CONTENT TYPE' => 'application/json'}
+  user = {user: {
+            email:  email,
+            password: password,
+          }}
+  post '/users/sign_in', user, headers
+end

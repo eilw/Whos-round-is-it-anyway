@@ -7,9 +7,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    @user = current_user
+    render json: @user.as_json(only: [:id, :email])
+  end
 
   # DELETE /resource/sign_out
   # def destroy
