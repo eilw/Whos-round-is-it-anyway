@@ -67,7 +67,8 @@
               </a>
             </li>
           </ul>
-          Users in group:<span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}</span>
+          Users in group:
+          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
         </section>
       </section>
     </section>
