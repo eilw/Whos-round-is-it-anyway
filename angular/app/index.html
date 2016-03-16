@@ -10,6 +10,8 @@
     <script src="js/controller/userController.js"></script>
     <script src="js/controller/groupController.js"></script>
     <script src="js/userDataService.js"></script>
+    <script src="js/groupDataFactory.js"></script>
+
 
   </head>
 
@@ -49,32 +51,36 @@
 
     </section>
 
-
     <section id="display-if-logged-in" ng-controller='GroupController as groupCtrl' ng-show="userCtrl.isLoggedIn()">
       <h2> Welcome, {{userCtrl.userName}}</h2>
+      <section id='creating-group' ng-hide=groupCtrl.isGroupCreated()>
+
       <button id='add-group' ng-click="show = true;">Add group</button>
 
-      <section id="group-creation" ng-show="show">
-        <input id='add-group-name' placeholder='Set group name' type='text' required/>
+        <section id="group-creation" ng-show="show">
+          <input id='add-group-name' ng-model="groupCtrl.groupName" placeholder='Set group name' type='text' required/>
 
-        <input id='searchbar' ng-model='query' placeholder='Search for a user' type='text'/>
+          <input id='searchbar' ng-model='query' placeholder='Search for a user' type='text'/>
 
-        <section id='users-list'>
-          <ul>
-            <li ng-repeat="user in groupCtrl.allUsers | filter: query" >
-              <a href="" ng-click="groupCtrl.addUser(user)" class='users'>
-                {{user.name}}
-              </a>
-            </li>
-          </ul>
-          Users in group:
-          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
+          <section id='users-list'>
+            <ul>
+              <li ng-repeat="user in groupCtrl.allUsers | filter: query" >
+                <a href="" ng-click="groupCtrl.addUser(user);" class='users'>
+                  {{user.name}}
+                </a>
+              </li>
+            </ul>
+            Users in group:
+            <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
+          </section>
+          <button id='create-group' ng-click='groupCtrl.createGroup()'>Create Group</button>
         </section>
       </section>
     </section>
 
+    <section id="payments">
+      
+    </section>
+
   </body>
-
-
-
   </html>

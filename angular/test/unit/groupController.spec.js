@@ -24,6 +24,10 @@ describe('GroupController', function() {
   });
 
 
+  describe('#createGroup', function() {
+    //stuff :)
+  });
+
 
 
 
