@@ -12,20 +12,17 @@ describe("AddGroups", function() {
   it('a user creates a group and adds a user to it', function() {
     logIn();
     $('#add-group').click();
-    var accessOptions = element(by.css('.access-options'));
-    element(by.css('#add-group-name')).sendKeys('Group1');
+    var accessOptions = element(by.css('#access-options'));
+    element(by.model('groupCtrl.groupName')).sendKeys('Group1');
     element(by.model('query')).sendKeys('Rufus');
     element.all(by.css('.users')).last().click();
     var userName = element(by.css('.users-in-group')).getText()
     expect(userName).toEqual('Rufus');
 
     element(by.css('#create-group')).click();
-    var groupName = element(by.css('h1')).getText();
+    var groupName = element(by.css('#group-title')).getText();
     expect(groupName).toEqual('Group1');
     expect(accessOptions.isDisplayed()).toBeFalsy();
-
-
-
   });
 
 });

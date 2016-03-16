@@ -73,14 +73,18 @@
             Users in group:
             <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
           </section>
-          <button id='create-group' ng-click='groupCtrl.createGroup()'>Create Group</button>
+          <button id='create-group' ng-click="groupCtrl.createGroup()">Create Group</button>
         </section>
+      </section>
+
+      <section id="payments" ng-show="groupCtrl.isGroupCreated()">
+        <h1 id='group-title'>{{groupCtrl.groupName}}</h1>
+        Users in group:
+        <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
       </section>
     </section>
 
-    <section id="payments">
-      
-    </section>
+
 
   </body>
   </html>
