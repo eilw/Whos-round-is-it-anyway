@@ -10,26 +10,24 @@ def register_user(email="test@test.com", username="john jones")
 end
 
 def add_group
-  register_user
-  register_user('test2@test.com', 'simon sauder')
-  register_user('test3@test.com', 'jimmy mac')
+  user1 = create(:user, email:'test1@email.com', username:'simon sauder')
+  user2 = create(:user, email:'test2@email.com', username:'jimmy mac')
   headers = {'CONTENT TYPE' => 'application/json'}
   group = {group: {
             name: 'groupname',
-            user_ids: [1, 2, 3]
+            user_ids: [user1.id, user2.id]
           }}
   post '/groups', group, headers
 end
 
-def submit_payment
-  register_user
-  Group.create(name: 'groupname', user_ids: [4])
+def submit_payment(user1)
+  group = create(:group, user_ids: [user1.id])
   headers = {'CONTENT TYPE' => 'application/json'}
   payment = {payment: {
             amount: 100.23,
-            user_id: 4
+            user_id: user1.id
           }}
-  post '/groups/2/payments', payment, headers
+  post "/groups/#{group.id}/payments", payment, headers
 end
 
 def sign_in(email="test@test.com", password="12345678")
