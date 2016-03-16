@@ -5,8 +5,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
+    @group = Group.find(params[:group_id])
     @payment = Payment.create(payment_params)
-    redirect_to '/index'
+    @user = @group.current_payer
+    render json: @user.as_json(only: [:id, :email, :username])
   end
-
 end

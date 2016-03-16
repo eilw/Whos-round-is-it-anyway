@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :payments
   validates_presence_of :username
   validates_uniqueness_of :username
+
+  # def total
+  #   payments.sum(:total)
+  # end
 end

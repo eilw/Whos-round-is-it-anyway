@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   resources :groups do
+    get 'payer', on: :member
     resources :payments
   end
 
