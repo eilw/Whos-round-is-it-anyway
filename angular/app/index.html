@@ -57,17 +57,17 @@
       <section id="group-creation" ng-show="show">
         <input id='add-group-name' placeholder='Set group name' type='text' required/>
 
-        <input id='searchbar' ng-model='groupCtrl.search' placeholder='Search for a user' type='text'/>
+        <input id='searchbar' ng-model='query' placeholder='Search for a user' type='text'/>
 
         <section id='users-list'>
           <ul>
-            <li ng-repeat='user in groupCtrl.allUsers track by $index'>
+            <li ng-repeat="user in groupCtrl.allUsers | filter: query" >
               <a href="" ng-click="groupCtrl.addUser(user)" class='users'>
                 {{user.name}}
               </a>
             </li>
           </ul>
-          Users in group: {{groupCtrl.groupUsers}}
+          Users in group:<span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}</span>
         </section>
       </section>
     </section>

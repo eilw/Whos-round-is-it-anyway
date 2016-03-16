@@ -11,17 +11,12 @@ describe("AddGroups", function() {
 
   it('a user creates a group and adds a user to it', function() {
     logIn();
-    // helpers.loginHelper();
-
     $('#add-group').click();
     element(by.css('#add-group-name')).sendKeys('Group1');
-    element(by.model('groupCtrl.search')).sendKeys('First user');
-    element.all(by.css('.users')).first().click();
-    var userName = element(by.css('#users-in-group')).getText()
-    expect(userName).toEqual('First user');
-
+    element(by.model('query')).sendKeys('Rufus');
+    element.all(by.css('.users')).last().click();
+    var userName = element(by.css('.users-in-group')).getText()
+    expect(userName).toEqual('Rufus');
   });
-
-
 
 });
