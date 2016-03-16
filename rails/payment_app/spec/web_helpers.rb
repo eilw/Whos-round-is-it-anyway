@@ -1,17 +1,18 @@
-def register_user(email="test@test.com")
+def register_user(email="test@test.com", username="john jones")
   headers = {'CONTENT TYPE' => 'application/json'}
   user = {user: {
             email:  email,
             password: "12345678",
-            password_confirmation: "12345678"
+            password_confirmation: "12345678",
+            username: username
           }}
   post '/users', user, headers
 end
 
 def add_group
   register_user
-  register_user('test2@test.com')
-  register_user('test3@test.com')
+  register_user('test2@test.com', 'simon sauder')
+  register_user('test3@test.com', 'jimmy mac')
   headers = {'CONTENT TYPE' => 'application/json'}
   group = {group: {
             name: 'groupname',

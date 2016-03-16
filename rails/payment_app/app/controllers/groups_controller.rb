@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.create(group_params)
-    redirect_to '/index'
+    render json: @group.as_json(include: :users), status: 201
   end
 
 end

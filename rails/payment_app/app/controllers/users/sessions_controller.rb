@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     # super
     @user = current_user
-    render json: @user.as_json(only: [:id, :email])
+    render json: @user.as_json(only: [:id, :email, :username])
   end
 
   # DELETE /resource/sign_out
