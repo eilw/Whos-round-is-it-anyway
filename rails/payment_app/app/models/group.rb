@@ -5,7 +5,4 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :users
 
-  # has_many :members, class_name: "User"
-  # validates_presence_of :members
-
 end
