@@ -2,7 +2,7 @@ paymentApp.service('userDataService', ['$http', function($http) {
   var self = this;
 
   self.sendUserSignUp = function(user) {
-    var queryUrl = '/users/create';
+    var queryUrl = '/users';
     var headers = { headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

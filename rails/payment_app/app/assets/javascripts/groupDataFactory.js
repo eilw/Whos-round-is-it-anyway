@@ -2,7 +2,7 @@ paymentApp.factory('groupDataFactory', ['$http', function($http) {
   var groupDataFactory = function() {};
 
   groupDataFactory.prototype.createGroup = function (group) {
-    var queryUrl = '/groups/create';
+    var queryUrl = '/groups';
     var headers = { headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

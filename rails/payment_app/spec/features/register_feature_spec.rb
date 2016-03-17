@@ -1,4 +1,6 @@
 require 'rails_helper'
+include Capybara::Angular::DSL
+
 
 feature 'user registration', type: :request do
   scenario 'valid POST to /users adds user to database' do

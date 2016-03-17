@@ -3,9 +3,10 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
   var self = this;
   var groupDataFactory = new groupDataFactory();
 
-  self.allUsers = [{name: 'Rufus'}, {name: 'Eirik'}, {name: 'Arnold'}, {name: 'Chris'}];
+  self.allUsers = [{name: 'Rufus', id: 2}, {name: 'Eirik', id: 1}];
   self.groupName = '';
   self.groupUsers = [];
+  self.groupUsersIds = [];
   self.groupStatus = false;
   self.currentPayer;
   self.showCreateGroupButton = true;
@@ -19,11 +20,14 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
   };
 
   self.addUser = function(user) {
-    if (self.groupUsers.indexOf(user) < 0) {self.groupUsers.push(user)};
-  };
+    if (self.groupUsers.indexOf(user) < 0) {
+      self.groupUsers.push(user)
+      self.groupUsersIds.push(user.id)
+    };
+  }
 
   self.createGroup = function() {
-    var group = { name: self.groupName, users: self.groupUsers }
+    var group = { group: { name: self.groupName, user_ids: self.groupUsersIds } }
     groupDataFactory.createGroup(group);
     self.groupStatus = true;
   };
