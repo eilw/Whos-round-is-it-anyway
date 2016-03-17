@@ -59,6 +59,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    colorize (0.7.7)
     concurrent-ruby (1.0.1)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
@@ -105,6 +106,9 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    protractor-rails (0.0.19)
+      colorize
+      railties
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -218,6 +222,7 @@ DEPENDENCIES
   jquery-rails
   pg (~> 0.15)
   poltergeist
+  protractor-rails
   rails (= 4.2.5.1)
   rspec-collection_matchers
   rspec-rails
