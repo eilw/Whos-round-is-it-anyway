@@ -39,7 +39,6 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
   gem 'protractor-rails'
-
 end
 
 group :development do
@@ -53,6 +52,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-angular'
   gem 'rspec-collection_matchers'
   gem 'database_cleaner'
   gem 'poltergeist'

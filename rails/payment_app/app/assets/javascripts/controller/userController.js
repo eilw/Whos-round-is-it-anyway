@@ -18,7 +18,7 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   };
 
   self.signUp = function(){
-    var user = {userName: self.userName, email: self.email, password: self.password };
+    var user = { user: {username: self.userName, email: self.email, password: self.password, password_confirmation: self.passwordConfirmation } };
     userDataService.sendUserSignUp(user)
     // .then(function(){
     // });
