@@ -31,20 +31,14 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.logIn = function() {
     var user = {user: {email: self.email, password: self.password }};
       userDataService.sendUserLogIn(user).then(function(response){
-        console.log('reading response')
-        console.log(response)
-        console.log(response.data);
-        console.log(response.data.id);
         self.userId = response.data.id;
         self.userName = response.data.username;
-
-        // self.groupId = response.group.id;
+        self.groupId = response.data.groups[0].id;
     });
     self.loggedInStatus = true;
   };
 
-
-
-
-
+  // self.logOut = function() {
+  //   userDataService.logOut();
+  // };
 }]);

@@ -12,10 +12,10 @@ describe('factory: groupDataFactory', function() {
     var group = {name: 'TestGroup', users: [{name: 'Rufus'}, {name: 'Eirick'}]};
 
     beforeEach(inject(function($httpBackend) {
-    
+
       httpBackend = $httpBackend;
       httpBackend
-        .when('POST', '/groups/create', group)
+        .when('POST', '/groups', group)
         .respond(
           { status: 200  }
         );

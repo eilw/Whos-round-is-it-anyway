@@ -36,6 +36,8 @@
 
   <section id="display-if-logged-in" ng-controller='GroupController as groupCtrl' ng-show="userCtrl.isLoggedIn()">
     <h2> Welcome, {{userCtrl.userName}}</h2>
+    <!-- <button id='logout' ng-click="userCtrl.logOut()">Log out</button> -->
+
     <section id='creating-group' ng-hide="groupCtrl.isGroupCreated()">
 
       <button id='add-group' ng-show="groupCtrl.showCreateGroupButton" ng-click="show = true; groupCtrl.hideGroupButton(); groupCtrl.getAllUsers();">Add new group</button>
@@ -66,9 +68,9 @@
     <section id="payments" ng-show="groupCtrl.isGroupCreated()" ng-controller="PaymentController as paymentCtlr">
       <h1 id='group-title'>{{groupCtrl.groupName}}</h1>
       Users in group:<br />
-      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span><br />
+      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span><br />
       The current payer is...<br /><br />
-      <h2 id='current-payer'> {{paymentCtrl.currentPayer.name}} </h2><br />
+      <h2 id='current-payer'> {{paymentCtrl.currentPayer.username}} </h2><br />
       <input type='text' ng-model="paymentCtrl.paymentAmount"/>
       <button id='make-payment' ng-click="paymentCtrl.pay(userCtrl.groupId, userCtrl.userId, paymentCtrl.paymentAmount)">PAY</button>
     </section>

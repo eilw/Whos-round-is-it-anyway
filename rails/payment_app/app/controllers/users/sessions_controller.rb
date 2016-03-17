@@ -10,17 +10,13 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     @user = current_user
-    # user = params['user']
-    # p user
-    # @user = User.find(email: user.email)
     render json: @user.as_json(only: [:id, :email, :username], include: :groups)
   end
 
   # DELETE /resource/sign_out
-  def destroy
+  # def destroy
     # super
-    current_user = nil
-  end
+  # end
 
   # protected
 

@@ -8,16 +8,18 @@ paymentApp.service('userDataService', ['$http', function($http) {
         'Accept': 'application/json'
       }};
     return $http.post(queryUrl, user, headers);
-    };
+  };
 
-    self.sendUserLogIn = function(user) {
-      var queryUrl = '/users/sign_in';
-      var headers = { headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }};
+  self.sendUserLogIn = function(user) {
+    var queryUrl = '/users/sign_in';
+    var headers = { headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }};
+    return $http.post(queryUrl, user, headers);
+  };
 
-      $http.delete('/users/sign_out');
-      return $http.post(queryUrl, user, headers);
-    };
+  // self.logOut = function() {
+  //   return $http.delete('/users/sign_out');
+  // };
 }]);
