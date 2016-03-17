@@ -3,7 +3,7 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
   var self = this;
   var groupDataFactory = new groupDataFactory();
 
-  self.allUsers = [{name: 'Rufus', id: 2}, {name: 'Eirik', id: 1}];
+  self.allUsers = [];
   self.groupName = '';
   self.groupUsers = [];
   self.groupUsersIds = [];
@@ -25,6 +25,13 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
       self.groupUsersIds.push(user.id)
     };
   }
+
+  self.getAllUsers = function() {
+    groupDataFactory.getAllUsers()
+      .then(function(response) {
+        self.allUsers = response.data;
+      });
+  };
 
   self.createGroup = function() {
     var group = { group: { name: self.groupName, user_ids: self.groupUsersIds } }

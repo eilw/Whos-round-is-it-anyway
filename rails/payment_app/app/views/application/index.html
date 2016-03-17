@@ -38,7 +38,7 @@
     <h2> Welcome, {{userCtrl.userName}}</h2>
     <section id='creating-group' ng-hide="groupCtrl.isGroupCreated()">
 
-      <button id='add-group' ng-show="groupCtrl.showCreateGroupButton" ng-click="show = true; groupCtrl.hideGroupButton();">Add new group</button>
+      <button id='add-group' ng-show="groupCtrl.showCreateGroupButton" ng-click="show = true; groupCtrl.hideGroupButton(); groupCtrl.getAllUsers();">Add new group</button>
 
       <section id="group-creation" ng-show="show">
         <input id='add-group-name' ng-model="groupCtrl.groupName" placeholder='Set group name' type='text' required/>
@@ -49,7 +49,7 @@
           <ul>
             <li ng-repeat="user in groupCtrl.allUsers | filter: query" >
               <a href="" ng-click="groupCtrl.addUser(user);" class='users'>
-                {{user.name}}
+                {{user.username}}
               </a>
             </li>
           </ul>
