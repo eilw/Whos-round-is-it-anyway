@@ -19,7 +19,7 @@ paymentApp.service('userDataService', ['$http', function($http) {
     return $http.post(queryUrl, user, headers);
   };
 
-  // self.logOut = function() {
-  //   return $http.delete('/users/sign_out');
-  // };
+  self.logOut = function() {
+    return $http.delete('/users/sign_out');
+  };
 }]);

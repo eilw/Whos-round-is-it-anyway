@@ -38,7 +38,9 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
     self.loggedInStatus = true;
   };
 
-  // self.logOut = function() {
-  //   userDataService.logOut();
-  // };
+  self.logOut = function() {
+    userDataService.logOut().then(function() {
+      self.loggedInStatus = false;
+    });
+  };
 }]);

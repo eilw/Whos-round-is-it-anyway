@@ -14,9 +14,13 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  # def destroy
+  def destroy
     # super
-  # end
+    sign_out
+    render json: {success: 'true'}, status: 200
+    # # redirect_to 'application#index'
+    # render text: 'Goodbye'
+  end
 
   # protected
 
