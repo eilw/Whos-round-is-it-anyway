@@ -1,5 +1,6 @@
 <body ng-controller="UserController as userCtrl" >
 <section id='access-options' ng-hide='userCtrl.isLoggedIn()'>
+
   <section id='choose-action' ng-show="userCtrl.noOptionChosen()">
     <button id='choose-signup' ng-click="userCtrl.chooseSignUp = true;">Sign up</button>
     <button id='choose-login' ng-click="userCtrl.chooseLogIn = true;">Log in</button>
@@ -65,3 +66,5 @@
     <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
   </section>
 </section>
+
+</body>
