@@ -16,6 +16,8 @@ paymentApp.service('userDataService', ['$http', function($http) {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }};
+
+      $http.delete('/users/sign_out');
       return $http.post(queryUrl, user, headers);
     };
 }]);

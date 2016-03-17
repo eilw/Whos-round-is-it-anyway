@@ -47,6 +47,14 @@ describe('UserController', function() {
     });
   });
 
+  describe("sending data to server",function(){
+
+    xit("sendUserSignUp is activated",function(){
+      ctrl.signUp();
+      expect(mockUserService.sendUserSignUp).toHaveBeenCalled();
+    });
+  });
+
 
 
 
