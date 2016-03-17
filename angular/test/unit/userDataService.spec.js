@@ -31,8 +31,8 @@ describe('service: userDataService', function() {
 
   describe('logging in', function() {
     var responseUser = {};
+    var user = {email: 'test@email.com', password: 'password'};
     beforeEach(inject(function($httpBackend) {
-      var user = {email: 'test@email.com', password: 'password'};
       httpBackend = $httpBackend;
       httpBackend
         .when('POST', '/users/sign_in', user)
@@ -42,7 +42,6 @@ describe('service: userDataService', function() {
     }));
 
     it('responds to sendUserLogIn', function() {
-      var user = {email: 'test@email.com', password: 'password'};
       userData.sendUserLogIn(user)
       .then(function(response){
         expect(response.status).toEqual(200);
