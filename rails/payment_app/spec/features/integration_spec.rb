@@ -14,16 +14,31 @@ feature 'user flow test', js:true do
     fill_in('password', with: '12345678')
     fill_in('password_confirmation', with: '12345678')
     click_button('signUp')
+
     expect(page).to have_button('add-group')
     expect(User.count).to eq 3
+
     click_button('add-group')
     fill_in('add-group-name', with: 'group1')
+
     expect(page).to have_content('simon sauder')
     expect(page).to have_content('jimmy mac')
-    find('.users', match: :first).click
 
+    find('.users', match: :first).click
     click_button('create-group')
     expect(page).to have_content('group1')
     expect(Group.count).to eq 1
+    visit '/'
+    click_button('choose-login')
+    fill_in('email', with: 'user1@email.com')
+    fill_in('password', with: '12345678')
+    click_button('logIn')
+    expect(page).to have_content('Welcome, User1')
+
+
+
+
+
+
   end
 end

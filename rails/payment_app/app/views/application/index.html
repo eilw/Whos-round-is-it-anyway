@@ -25,9 +25,9 @@
     <section id='user-login' ng-show="userCtrl.chooseLogIn">
       <form>
         email:<br>
-        <input type="email" ng-model="userCtrl.email" required><br>
+        <input type="email" name='email' ng-model="userCtrl.email" required><br>
         password:<br>
-        <input type="password" ng-model="userCtrl.password" required>
+        <input type="password" name='password' ng-model="userCtrl.password" required>
         <input id="logIn" type="submit" value="Submit" ng-click="userCtrl.signUp()">
       </form>
     </section>
@@ -54,7 +54,7 @@
             </li>
           </ul>
           Users in group:
-          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
+          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
         </section>
         <button id='create-group' ng-click="groupCtrl.createGroup()">Create Group</button>
       </section>
