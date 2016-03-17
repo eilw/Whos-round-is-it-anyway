@@ -8,10 +8,16 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
   self.groupUsers = [];
   self.groupUsersIds = [];
   self.groupStatus = false;
+  self.currentPayer;
+  self.showCreateGroupButton = true;
+
+  self.hideGroupButton = function() {
+    self.showCreateGroupButton = false;
+  };
 
   self.isGroupCreated = function(){
     return self.groupStatus;
-  }
+  };
 
   self.addUser = function(user) {
     if (self.groupUsers.indexOf(user) < 0) {
@@ -24,6 +30,13 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
     var group = { group: { name: self.groupName, user_ids: self.groupUsersIds } }
     groupDataFactory.createGroup(group);
     self.groupStatus = true;
-  }
+  };
+
+  self.updateCurrentPayer = function() {
+    currentPayerDataFactory.retrieveCurrentPayer()
+      .then(function(response) {
+        self.currentPayer = response.data.payer;
+      });
+  };
 
 }]);

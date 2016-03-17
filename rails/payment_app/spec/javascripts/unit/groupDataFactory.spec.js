@@ -9,8 +9,10 @@ describe('factory: groupDataFactory', function() {
   }));
 
   describe('creating group', function() {
+    var group = {name: 'TestGroup', users: [{name: 'Rufus'}, {name: 'Eirick'}]};
+
     beforeEach(inject(function($httpBackend) {
-      var group = {name: 'TestGroup', users: [{name: 'Rufus'}, {name: 'Eirick'}]};
+    
       httpBackend = $httpBackend;
       httpBackend
         .when('POST', '/groups/create', group)
@@ -20,7 +22,7 @@ describe('factory: groupDataFactory', function() {
     }));
 
     it('responds to createGroup', function() {
-      var group = {name: 'TestGroup', users: [{name: 'Rufus'}, {name: 'Eirick'}]};
+
       groupData.createGroup(group)
       .then(function(response){
         expect(response.status).toEqual(200);
