@@ -10,4 +10,9 @@ FactoryGirl.define do
     name 'group1'
     user_ids [1, 2, 3]
   end
+
+  factory :payment do
+    user_id 1
+    amount 40
+  end
 end

@@ -3,14 +3,16 @@ paymentApp.controller('PaymentController', ['currentPayerDataFactory', function(
   var self = this;
   var currentPayerDataFactory = new currentPayerDataFactory();
 
-  self.currentPayer = 'Chris';
+  self.currentPayer;
   self.paymentAmount;
 
 
   self.updateCurrentPayer = function(id) {
+    console.log(id);
     currentPayerDataFactory.retrieveCurrentPayer(id)
       .then(function(response) {
-        self.currentPayer = response.data.payer;
+        console.log(response.data);
+        self.currentPayer = response.data;
       });
   };
 

@@ -4,6 +4,7 @@ paymentApp.factory('currentPayerDataFactory', ['$http', function($http) {
   currentPayerDataFactory.prototype.retrieveCurrentPayer = function (id) {
     var groupId = id;
     var queryUrl = "/groups/" + groupId + "/payer";
+    console.log(queryUrl);
     return $http.get(queryUrl);
   };
 
