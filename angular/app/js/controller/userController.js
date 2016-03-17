@@ -4,21 +4,23 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.chooseSignUp = false;
   self.chooseLogIn = false;
   self.userName = "";
-  self.email ="";
+  self.email = "";
   self.password = "";
   self.passwordConfirmation = "";
+  self.userId;
+  self.groupId;
   self.loggedInStatus = false;
 
   self.noOptionChosen = function() {
     if (!self.chooseSignUp && !self.chooseLogIn) { return true; }
-  }
+  };
 
   self.isLoggedIn = function(){
     return self.loggedInStatus;
   };
 
   self.signUp = function(){
-    var user = {userName: self.userName, email: self.email, password: self.password };
+    var user = {userName: self.userName, email: self.email, password: self.password, passwordConfirmation: self.passwordConfirmation};
     userDataService.sendUserSignUp(user)
     // .then(function(){
     // });
@@ -28,7 +30,9 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
 
   self.logIn = function() {
     var user = {email: self.email, password: self.password };
-      userDataService.sendUserLogIn(user).then(function(){
+      userDataService.sendUserLogIn(user).then(function(response){
+        self.userId = response.user.id;
+        self.groupId = response.group.id;
     });
     self.loggedInStatus = true;
   };
