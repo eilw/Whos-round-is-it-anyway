@@ -24,7 +24,7 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
           self.loggedInStatus = true;
           self.userId = response.data.id;
           self.userName = response.data.username;
-          self.groupId = response.data.groups[0].id;
+          if(response.data.groups.length > 0) { self.groupId = response.data.groups[0].id; }
         }
      });
   };
@@ -42,7 +42,7 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
     userDataService.sendUserLogIn(user).then(function(response){
       self.userId = response.data.id;
       self.userName = response.data.username;
-      self.groupId = response.data.groups[0].id;
+      if(response.data.groups.length > 0) { self.groupId = response.data.groups[0].id; }
       self.loggedInStatus = true;
     }, function(response) {
       self.loggedInStatus = false;

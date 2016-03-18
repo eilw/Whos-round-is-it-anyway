@@ -7,7 +7,7 @@ describe("UserLogIn", function() {
     $('#logIn').click();
     var welcome = element(by.css('h2'));
     expect(welcome.isDisplayed()).toBeFalsy();
-    // expect(welcome.getText()).toEqual('Welcome, Test Name');
+    // expect(welcome.getText()).toEqual('logged in as  Test Name');
     // add to test if the right user is included
 
   });

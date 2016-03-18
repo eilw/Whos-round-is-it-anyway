@@ -16,3 +16,35 @@
 
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+body {
+  // text-align: center;
+}
+
+.col-md-4 {
+  border: 1px solid red;
+}
+
+.navbar {
+  background-color: rgb(10, 113, 45);
+  .navbar-brand {
+    color: rgb(245, 245, 245);
+  }
+}
+
+.content {
+  margin: 30px auto;
+}
+
+#creating-group {
+  margin: 20px auto;
+  #add-group-name {
+    margin: 10px auto;
+  }
+  .users-in-group {
+    font-weight: bold;
+  }
+}
+#create-group {
+  margin: 10px auto;
+}

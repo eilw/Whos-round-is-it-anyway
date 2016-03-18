@@ -9,7 +9,7 @@ describe("UserSignUp", function() {
     $('#signUp').click();
     var signUpForm = element(by.css('form'))
     var welcome = element(by.css('h2'));
-    expect(welcome.getText()).toEqual('Welcome, Test Name');
+    expect(welcome.getText()).toEqual('logged in as  Test Name');
     expect(signUpForm.isDisplayed()).toBeFalsy();
   });
 
