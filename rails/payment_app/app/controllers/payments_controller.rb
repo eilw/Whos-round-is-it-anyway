@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
 
   def payment_params
     params.require(:payment).permit(:amount, :user_id)
