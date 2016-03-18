@@ -26,7 +26,8 @@ feature 'user flow test', js:true do
     expect(page).to have_content('simon sauder')
     expect(page).to have_content('jimmy mac')
 
-    find('.users', match: :first).click
+    page.all('.users').each(&:click)
+
     click_button('create-group')
     expect(page).to have_content('group1')
     expect(Group.count).to eq 1

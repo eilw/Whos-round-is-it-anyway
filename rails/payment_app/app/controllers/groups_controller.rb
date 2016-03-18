@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
   def payer
     group = Group.find(params[:id])
     user = group.current_payer
-    p(user)
     render json: user.as_json(only: [:id, :email, :username])
   end
 end

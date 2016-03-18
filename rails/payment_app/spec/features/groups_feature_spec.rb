@@ -24,11 +24,11 @@ feature 'groups', type: :request do
   end
 
   scenario 'group retrieve current payer' do
-    user2.payments.create(amount: 5)
+    user2.payments.create(amount: 5, group: group)
     get "/groups/#{group.id}/payer"
     expect(JSON.parse(response.body)["id"]).to eq user1.id
 
-    user1.payments.create(amount: 10)
+    user1.payments.create(amount: 10, group: group)
     get "/groups/#{group.id}/payer"
     expect(JSON.parse(response.body)["id"]).to eq user2.id
   end

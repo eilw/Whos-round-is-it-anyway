@@ -5,11 +5,15 @@ paymentApp.factory('currentPayerDataFactory', ['$http', 'sessionDataService', fu
   currentPayerDataFactory.prototype.retrieveCurrentPayer = function () {
     var groupId = sessionDataService.groupId;
     var queryUrl = "/groups/" + groupId + "/payer";
-    console.log(queryUrl);
     return $http.get(queryUrl);
   };
 
-  currentPayerDataFactory.prototype.makePayment = function (groupId, userId, paymentAmount) {
+  currentPayerDataFactory.prototype.makePayment = function (paymentAmount) {
+    var userId = sessionDataService.currentPayer.id;
+    var groupId = sessionDataService.groupId;
+
+    console.log(userId);
+
     var paymentHash = { group_id: groupId, user_id: userId, amount: paymentAmount};
     var queryUrl = "/groups/" + groupId + "/payments";
     var headers = { headers: {
