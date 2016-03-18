@@ -3,7 +3,6 @@ describe('GroupController', function() {
 
   var ctrl;
 
-
   beforeEach(inject(function($controller) {
     ctrl = $controller('GroupController');
   }));
@@ -22,14 +21,5 @@ describe('GroupController', function() {
       expect(ctrl.groupUsers.length).toEqual(1);
     });
   });
-
-
-
-
-  describe('#createGroup', function() {
-    //stuff :)
-  });
-
-
 
 });

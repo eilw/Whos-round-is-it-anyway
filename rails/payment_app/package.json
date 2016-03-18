@@ -10,7 +10,7 @@
     "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
-    "protractor": "protractor spec/test/protractor-conf.js"
+    "protractor": "protractor spec/javascripts/protractor.conf.js"
   },
   "repository": {
     "type": "git",
