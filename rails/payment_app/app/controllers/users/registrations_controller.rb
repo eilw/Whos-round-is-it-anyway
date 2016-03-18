@@ -14,8 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    p params
-    p user_params
     User.create(user_params)
     redirect_to '/index'
   end
