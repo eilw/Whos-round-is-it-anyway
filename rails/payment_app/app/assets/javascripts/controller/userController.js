@@ -7,8 +7,6 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
   self.email = "";
   self.password = "";
   self.passwordConfirmation = "";
-  self.userId;
-  self.groupId;
   self.loggedInStatus = false;
 
   self.noOptionChosen = function() {
@@ -56,7 +54,5 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
       self.password = "";
     });
   };
-
   self.isLoggedIn();
-
 }]);

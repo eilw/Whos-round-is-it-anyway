@@ -1,23 +1,36 @@
-paymentApp.controller('PaymentController', ['currentPayerDataFactory', function(currentPayerDataFactory){
+paymentApp.controller('PaymentController', ['currentPayerDataFactory', 'sessionDataService', function(currentPayerDataFactory, sessionDataService){
 
   var self = this;
-  var currentPayerDataFactory = new currentPayerDataFactory();
+  var currentPayerData = new currentPayerDataFactory();
 
-  self.currentPayer = 'Chris';
-  self.paymentAmount;
+  self.show = false;
 
 
-  self.updateCurrentPayer = function(id) {
-    currentPayerDataFactory.retrieveCurrentPayer(id)
+  self.setShowPayer = function() {
+    self.show = true;
+  };
+
+  self.showPayer = function() {
+    return self.show;
+  };
+
+  self.getPayerName = function() {
+    return sessionDataService.currentPayer.username;
+  };
+
+  self.updateCurrentPayer = function() {
+    console.log('I am called');
+    currentPayerData.retrieveCurrentPayer()
       .then(function(response) {
-        self.currentPayer = response.data.payer;
+        console.log(response.data.username);
+        sessionDataService.currentPayer = response.data;
       });
   };
 
   self.pay = function ( groupId, userId, paymentAmount ) {
-    currentPayerDataFactory.makePayment ( groupId, userId, paymentAmount )
+    currentPayerData.makePayment ( groupId, userId, paymentAmount )
       .then(function(response) {
-        self.currentPayer = response.data.payer;
+        sessionDataService.currentPayer = response.data.payer;
       });
   };
 

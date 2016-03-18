@@ -1,14 +1,14 @@
-paymentApp.controller('GroupController', ['groupDataFactory', function(groupDataFactory){
+paymentApp.controller('GroupController', ['groupDataFactory', 'currentPayerDataFactory', 'sessionDataService', function(groupDataFactory, currentPayerDataFactory, sessionDataService){
 
   var self = this;
-  var groupDataFactory = new groupDataFactory();
+  var groupData = new groupDataFactory();
+  var currentPayerData = new currentPayerDataFactory();
 
   self.allUsers = [];
   self.groupName = '';
   self.groupUsers = [];
   self.groupUsersIds = [];
   self.groupStatus = false;
-  self.currentPayer;
   self.showCreateGroupButton = true;
 
   self.hideGroupButton = function() {
@@ -21,29 +21,26 @@ paymentApp.controller('GroupController', ['groupDataFactory', function(groupData
 
   self.addUser = function(user) {
     if (self.groupUsers.indexOf(user) < 0) {
-      self.groupUsers.push(user)
-      self.groupUsersIds.push(user.id)
-    };
-  }
+      self.groupUsers.push(user);
+      self.groupUsersIds.push(user.id);
+    }
+  };
 
   self.getAllUsers = function() {
-    groupDataFactory.getAllUsers()
+    groupData.getAllUsers()
       .then(function(response) {
         self.allUsers = response.data;
       });
   };
 
   self.createGroup = function() {
-    var group = { group: { name: self.groupName, user_ids: self.groupUsersIds } }
-    groupDataFactory.createGroup(group);
+    var group = { group: { name: self.groupName, user_ids: self.groupUsersIds } };
+    groupData.createGroup(group)
+      .then(function(response) {
+        sessionDataService.groupId = response.data.id;
+      });
     self.groupStatus = true;
   };
 
-  self.updateCurrentPayer = function() {
-    currentPayerDataFactory.retrieveCurrentPayer()
-      .then(function(response) {
-        self.currentPayer = response.data.payer;
-      });
-  };
 
 }]);

@@ -1,4 +1,5 @@
 <section id='creating-group' ng-hide="groupCtrl.isGroupCreated()">
+
   <button id='add-group' ng-show="groupCtrl.showCreateGroupButton" ng-click="show = true; groupCtrl.hideGroupButton(); groupCtrl.getAllUsers();">Add new group</button>
 
   <section id="group-creation" ng-show="show">
@@ -17,6 +18,6 @@
       <div>Users in group:</div>
       <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
     </section>
-    <button id='create-group' ng-click="groupCtrl.createGroup()">Create Group</button>
+    <button id='create-group' ng-click="groupCtrl.createGroup();">Create Group</button>
   </section>
 </section>

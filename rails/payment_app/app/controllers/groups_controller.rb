@@ -6,18 +6,19 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(group_params)
-    render json: @group.as_json(include: :users), status: 201
+    group = Group.create(group_params)
+    render json: group.as_json(include: :users), status: 201
   end
 
   def show
-    @group = Group.find(params[:id])
-    render json: @group.as_json(include: :users)
+    group = Group.find(params[:id])
+    render json: group.as_json(include: :users)
   end
 
   def payer
-    @group = Group.find(params[:id])
-    @user = @group.current_payer
-    render json: @user.as_json(only: [:id, :email, :username])
+    group = Group.find(params[:id])
+    user = group.current_payer
+    p(user)
+    render json: user.as_json(only: [:id, :email, :username])
   end
 end

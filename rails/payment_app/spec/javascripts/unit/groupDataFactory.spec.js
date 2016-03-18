@@ -4,28 +4,39 @@ describe('factory: groupDataFactory', function() {
 
   beforeEach(module('PaymentApp'));
 
-  beforeEach(inject(function(groupDataFactory) {
+  beforeEach(inject(function(groupDataFactory, $httpBackend) {
     groupData = new groupDataFactory();
+    httpBackend = $httpBackend;
   }));
 
-  describe('creating group', function() {
+  describe('#createGroup', function() {
     var group = {name: 'TestGroup', users: [{name: 'Rufus'}, {name: 'Eirick'}]};
 
-    beforeEach(inject(function($httpBackend) {
-
-      httpBackend = $httpBackend;
+    it('responds to createGroup', function() {
       httpBackend
         .when('POST', '/groups', group)
         .respond(
-          { status: 200  }
-        );
-    }));
-
-    it('responds to createGroup', function() {
-
+          { status: 200  });
       groupData.createGroup(group)
       .then(function(response){
         expect(response.status).toEqual(200);
+      });
+      httpBackend.flush();
+    });
+  });
+
+  describe('#getAllUsers', function() {
+    var user = {name: 'Eirik'}
+
+    it('responds to getAllUsers', function() {
+      httpBackend
+        .when('GET', '/users')
+        .respond(
+          { users: user
+        });
+      groupData.getAllUsers()
+      .then(function(response){
+        expect(response.data.users).toEqual(user);
       });
       httpBackend.flush();
     });
