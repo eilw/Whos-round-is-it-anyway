@@ -6,3 +6,5 @@ npm-debug.log
 rails/payment_app/.bundle
 rails/payment_app/log/*
 rails/payment_app/tmp
+rails/payment_app/vendor/assets/bower_components
+rails/payment_app/node_modules
