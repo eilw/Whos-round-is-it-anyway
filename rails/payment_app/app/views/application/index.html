@@ -54,7 +54,7 @@
             </li>
           </ul>
           Users in group:
-          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
+          <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
         </section>
         <button id='create-group' ng-click="groupCtrl.createGroup();">Create Group</button>
       </section>
@@ -66,15 +66,14 @@
     <section id="payments" ng-show="groupCtrl.isGroupCreated()" ng-controller="PaymentController as paymentCtrl">
       <h1 id='group-title'>{{groupCtrl.groupName}}</h1>
       Users in group:<br />
+      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span><br />
 
       <button id='update-payer' ng-click="paymentCtrl.updateCurrentPayer
-      (); paymentCtrl.setShowPayer();">So... whose round is it anyway?</button>
+      (); paymentCtrl.setShowPayer();">So... whose round is it anyway?</button><br />
 
       <section id='who-is-paying' ng-show="paymentCtrl.showPayer()">
-        <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span><br />
         The current payer is...<br /><br />
         <h2 id='current-payer'> {{paymentCtrl.getPayerName();}} </h2><br />
-
         <input type='text' ng-model="paymentCtrl.paymentAmount"/>
         <button id='make-payment' ng-click="paymentCtrl.pay(userCtrl.groupId, userCtrl.userId, paymentCtrl.paymentAmount)">PAY</button>
       </section>

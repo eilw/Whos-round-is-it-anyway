@@ -22,7 +22,13 @@ feature 'user flow test', js:true do
     fill_in('add-group-name', with: 'group1')
     expect(page).to have_content('simon sauder')
     expect(page).to have_content('jimmy mac')
-    find('.users', match: :first).click
+
+    # find(".users", match: :first)
+    # all(".users").each(&:click)
+
+    click_link 'simon saunder'
+    click_link 'jimmy mac'
+    click_link 'User1'
 
     click_button('create-group')
     expect(page).to have_content('group1')
