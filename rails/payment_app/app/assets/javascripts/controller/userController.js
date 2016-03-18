@@ -33,6 +33,8 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
       userDataService.sendUserLogIn(user).then(function(response){
         self.userId = response.user.id;
         self.groupId = response.group.id;
+        console.log('LOOK HERE');
+        conole.log(response);
     });
     self.loggedInStatus = true;
   };
