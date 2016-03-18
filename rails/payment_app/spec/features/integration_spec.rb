@@ -28,6 +28,7 @@ feature 'user flow test', js:true do
     expect(page).to have_content('group1')
     expect(Group.count).to eq 1
 
+    find('#update-payer').click
     expect(page).to have_content 'The current payer is... User1'
   end
 end

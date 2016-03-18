@@ -7,8 +7,6 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.email = "";
   self.password = "";
   self.passwordConfirmation = "";
-  self.userId;
-  self.groupId;
   self.loggedInStatus = false;
 
   self.noOptionChosen = function() {
@@ -21,11 +19,10 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
 
   self.signUp = function(){
     var user = { user: {username: self.userName, email: self.email, password: self.password, password_confirmation: self.passwordConfirmation } };
-    userDataService.sendUserSignUp(user)
+    userDataService.sendUserSignUp(user);
     // .then(function(){
     // });
     self.loggedInStatus = true;
-    //  move into userDataService.sendUser once Rails integration has happened
   };
 
   self.logIn = function() {
@@ -33,14 +30,9 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
       userDataService.sendUserLogIn(user).then(function(response){
         self.userId = response.user.id;
         self.groupId = response.group.id;
-        console.log('LOOK HERE');
-        conole.log(response);
     });
     self.loggedInStatus = true;
   };
-
-
-
 
 
 }]);
