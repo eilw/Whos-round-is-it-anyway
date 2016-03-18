@@ -13,5 +13,15 @@ feature 'sign in users', type: :request do
     expect(response_body["email"]).to eq user1.email
     expect(response_body["username"]).to eq user1.username
     expect(response_body["groups"].first["id"]).to eq group.id
+
+    delete '/users/sign_out'
+
+    sign_in('test2@email.com', '12345678')
+    response_body = JSON.parse(response.body)
+    expect(response_body["id"]).to eq user2.id
+    expect(response_body["email"]).to eq user2.email
+    expect(response_body["username"]).to eq user2.username
+    expect(response_body["groups"].first["id"]).to eq group.id
+
   end
 end

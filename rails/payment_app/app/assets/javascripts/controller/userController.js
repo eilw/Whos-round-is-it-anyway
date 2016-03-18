@@ -1,4 +1,4 @@
-paymentApp.controller('UserController', ['userDataService', function(userDataService){
+paymentApp.controller('UserController', ['userDataService' , function(userDataService){
 
   var self = this;
   self.chooseSignUp = false;
@@ -14,25 +14,45 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   };
 
   self.isLoggedIn = function(){
-    return self.loggedInStatus;
+     userDataService.checkSession()
+      .then(function(response) {
+        if (response.data.id === 0) {
+          self.loggedInStatus = false;
+        } else {
+          self.loggedInStatus = true;
+          self.userId = response.data.id;
+          self.userName = response.data.username;
+          self.groupId = response.data.groups[0].id;
+        }
+     });
   };
 
   self.signUp = function(){
     var user = { user: {username: self.userName, email: self.email, password: self.password, password_confirmation: self.passwordConfirmation } };
-    userDataService.sendUserSignUp(user);
-    // .then(function(){
-    // });
-    self.loggedInStatus = true;
+    userDataService.sendUserSignUp(user)
+      .then(function(){
+        self.loggedInStatus = true;
+      });
   };
 
   self.logIn = function() {
-    var user = {email: self.email, password: self.password };
-      userDataService.sendUserLogIn(user).then(function(response){
-        self.userId = response.user.id;
-        self.groupId = response.group.id;
+    var user = {user: {email: self.email, password: self.password }};
+    userDataService.sendUserLogIn(user).then(function(response){
+      self.userId = response.data.id;
+      self.userName = response.data.username;
+      self.groupId = response.data.groups[0].id;
+      self.loggedInStatus = true;
+    }, function(response) {
+      self.loggedInStatus = false;
+      self.password = "";
     });
-    self.loggedInStatus = true;
   };
 
-
+  self.logOut = function() {
+    userDataService.logOut().then(function() {
+      self.loggedInStatus = false;
+      self.password = "";
+    });
+  };
+  self.isLoggedIn();
 }]);
