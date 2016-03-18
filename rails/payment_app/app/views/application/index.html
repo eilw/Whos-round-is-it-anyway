@@ -4,6 +4,7 @@
   <!-- <section id="display-if-logged-in" ng-controller='GroupController as groupCtrl' ng-show="userCtrl.isLoggedIn()"> -->
   <section id="display-if-logged-in" ng-controller='GroupController as groupCtrl' ng-show="userCtrl.loggedInStatus">
     <h2> Welcome, {{userCtrl.userName}}</h2>
+
     <button id='logout' ng-click="userCtrl.logOut()">Log out</button>
 
     <div ng-include="'group.html'"></div>

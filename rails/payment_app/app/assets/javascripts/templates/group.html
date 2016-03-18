@@ -16,7 +16,7 @@
         </li>
       </ul>
       Users in group:
-      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.name}}{{$last ? '' : ', '}} </span>
+      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
     </section>
     <button id='create-group' ng-click="groupCtrl.createGroup();">Create Group</button>
   </section>

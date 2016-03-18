@@ -19,18 +19,16 @@ paymentApp.controller('PaymentController', ['currentPayerDataFactory', 'sessionD
   };
 
   self.updateCurrentPayer = function() {
-    console.log('I am called');
     currentPayerData.retrieveCurrentPayer()
       .then(function(response) {
-        console.log(response.data.username);
         sessionDataService.currentPayer = response.data;
       });
   };
 
-  self.pay = function ( groupId, userId, paymentAmount ) {
-    currentPayerData.makePayment ( groupId, userId, paymentAmount )
+  self.pay = function (paymentAmount ) {
+    currentPayerData.makePayment ( paymentAmount )
       .then(function(response) {
-        sessionDataService.currentPayer = response.data.payer;
+        sessionDataService.currentPayer = response.data;
       });
   };
 
