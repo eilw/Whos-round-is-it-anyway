@@ -30,10 +30,14 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
 
   self.logIn = function() {
     var user = {user: {email: self.email, password: self.password }};
-      userDataService.sendUserLogIn(user).then(function(response){
-        self.userId = response.data.id;
-        self.userName = response.data.username;
-        self.groupId = response.data.groups[0].id;
+    userDataService.sendUserLogIn(user).then(function(response){
+      console.log(response);
+      self.userId = response.data.id;
+      self.userName = response.data.username;
+      self.groupId = response.data.groups[0].id;
+    }, function(response) {
+      self.loggedInStatus = false;
+      self.password = "";
     });
     self.loggedInStatus = true;
   };
@@ -41,6 +45,7 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.logOut = function() {
     userDataService.logOut().then(function() {
       self.loggedInStatus = false;
+      self.password = "";
     });
   };
 }]);

@@ -1,6 +1,8 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
   skip_before_filter  :verify_authenticity_token
+  clear_respond_to
+  respond_to :json
 
   # GET /resource/sign_in
   # def new
@@ -18,8 +20,6 @@ class Users::SessionsController < Devise::SessionsController
     # super
     sign_out
     render json: {success: 'true'}, status: 200
-    # # redirect_to 'application#index'
-    # render text: 'Goodbye'
   end
 
   # protected
