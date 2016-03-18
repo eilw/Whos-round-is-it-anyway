@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
 
   def group_params
     params.require(:group).permit(:name, {user_ids: [] })

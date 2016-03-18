@@ -10,17 +10,17 @@ describe('service: userDataService', function() {
 
   describe('signing up', function() {
     beforeEach(inject(function($httpBackend) {
-      var user = {username: 'Test', email: 'test@email.com', password: 'password'};
+      var user = { user: {username: 'Test', email: 'test@email.com', password: 'password', password_confirmation: 'password'} };
       httpBackend = $httpBackend;
       httpBackend
-        .when('POST', '/users/create', user)
+        .when('POST', '/users', user)
         .respond(
           { status: 200  }
         );
     }));
 
     it('responds to sendUserSignUp', function() {
-      var user = {username: 'Test', email: 'test@email.com', password: 'password'};
+      var user = { user: {username: 'Test', email: 'test@email.com', password: 'password', password_confirmation: 'password'} };
       userData.sendUserSignUp(user)
       .then(function(response){
         expect(response.status).toEqual(200);

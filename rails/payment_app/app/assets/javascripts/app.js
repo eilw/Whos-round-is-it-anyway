@@ -1,1 +1,1 @@
-var paymentApp = angular.module('PaymentApp', ['ngResource']);
+var paymentApp = angular.module('PaymentApp', ['ngResource', 'templates']);

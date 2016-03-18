@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm install",
     "start": "http-server ./app -a 0.0.0.0 -p 8000",
-    "test": "karma start spec/test/karma.conf.js",
+    "test": "karma start spec/javascripts/karma.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
