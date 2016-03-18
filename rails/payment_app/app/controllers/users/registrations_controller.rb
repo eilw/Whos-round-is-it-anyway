@@ -15,9 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    User.create(user_params)
-    @user = current_user
-    render json: @user.as_json(only: [:id, :email, :username]), status: 201
+    user = User.create(user_params)
+    # user = current_user
+    sign_in(:user, user)
+    render json: user.as_json(only: [:id, :email, :username]), status: 201
   end
 
   # GET /resource/edit

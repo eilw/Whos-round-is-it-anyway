@@ -4,8 +4,11 @@
 
   <section id="group-creation" ng-show="show">
     <input class="form-control" id='add-group-name' ng-model="groupCtrl.groupName" placeholder='Set group name' type='text' required/>
-    <br />
 
+    <button id='create-group' ng-show="groupCtrl.groupName && groupCtrl.groupUsers.length > 0" ng-click="groupCtrl.createGroup();">Create Group</button>
+    <div ng-show="groupCtrl.groupUsers.length > 0">Members:</div>
+    <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
+    <br />
     Click to add users:
     <input class="form-control" id='searchbar' ng-model='query' placeholder='Filter by user' type='text'/>
 
@@ -17,9 +20,6 @@
           </a>
         </li>
       </ul>
-      <div ng-show="groupCtrl.groupUsers.length > 0">Members:</div>
-      <span class='users-in-group' ng-repeat="user in groupCtrl.groupUsers">{{user.username}}{{$last ? '' : ', '}} </span>
     </section>
-    <button id='create-group' ng-show="groupCtrl.groupName" ng-click="groupCtrl.createGroup();">Create Group</button>
   </section>
 </section>

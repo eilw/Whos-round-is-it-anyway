@@ -44,6 +44,8 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
       self.loggedInStatus = true;
     }, function(response) {
       self.loggedInStatus = false;
+      self.chooseSignUp = false;
+      self.chooseLogIn = false;
       self.password = "";
     });
   };
@@ -51,6 +53,8 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
   self.logOut = function() {
     userDataService.logOut().then(function() {
       self.loggedInStatus = false;
+      self.chooseSignUp = false;
+      self.chooseLogIn = false;
       self.password = "";
     });
   };
