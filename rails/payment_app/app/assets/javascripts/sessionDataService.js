@@ -1,8 +1,7 @@
-paymentApp.service('sessionDataService', ['$http', function($http) {
+paymentApp.service('sessionDataService', [function() {
   var self = this;
 
   self.currentPayer = '';
-  self.payerId = undefined;
   self.groupId = undefined;
   self.groupPayers = undefined;
 

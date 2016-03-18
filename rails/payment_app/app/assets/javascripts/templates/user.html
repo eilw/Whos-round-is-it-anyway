@@ -8,27 +8,27 @@
   <section id='user-registration' ng-show="userCtrl.chooseSignUp">
     <form>
       username:<br>
-      <input type="text" name='username' ng-model="userCtrl.userName" required><br>
+      <input class="form-control" type="text" name='username' ng-model="userCtrl.userName" required><br>
       email:<br>
-      <input type="email" name='email' ng-model="userCtrl.email" required><br>
+      <input class="form-control" type="email" name='email' ng-model="userCtrl.email" required><br>
       password:<br>
-      <input type="password" name='password' ng-model="userCtrl.password" required>
+      <input class="form-control" type="password" name='password' ng-model="userCtrl.password" required>
       <br>
       password confirmation:<br>
-      <input type="password" name='password_confirmation' ng-model="userCtrl.passwordConfirmation" required>
+      <input class="form-control" type="password" name='password_confirmation' ng-model="userCtrl.passwordConfirmation" required>
       <br>
-      <input id="signUp" type="submit" value="Submit" ng-click="userCtrl.signUp()">
+      <input class="form-control" id="signUp" type="submit" value="Submit" ng-click="userCtrl.signUp()">
     </form>
   </section>
 
   <section id='user-login' ng-show="userCtrl.chooseLogIn">
     <form>
       email:<br>
-      <input type="email" name='email' ng-model="userCtrl.email" required><br>
+      <input class="form-control" type="email" name='email' ng-model="userCtrl.email" required><br>
       password:<br>
-      <input type="password" name='password' ng-model="userCtrl.password" required>
+      <input class="form-control" type="password" name='password' ng-model="userCtrl.password" required>
       <br>
-      <input id="logIn" type="submit" value="Submit" ng-click="userCtrl.logIn()">
+      <input class="form-control" id="logIn" type="submit" value="Submit" ng-click="userCtrl.logIn()">
     </form>
   </section>
 </section>

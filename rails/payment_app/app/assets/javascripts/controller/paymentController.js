@@ -29,7 +29,8 @@ paymentApp.controller('PaymentController', ['currentPayerDataFactory', 'sessionD
     currentPayerData.makePayment ( paymentAmount )
       .then(function(response) {
         sessionDataService.currentPayer = response.data;
+        self.paymentAmount = "";
+        self.show = false;
       });
   };
-
 }]);

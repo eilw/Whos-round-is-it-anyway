@@ -1,28 +1,24 @@
 <body ng-controller="UserController as userCtrl" >
+  <div class='col-md-3'></div>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">whose round is it anyway?</a>
+  <div class='col-md-6'>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><span id="beer"> 🍺 </span> whose round is it anyway?</a>
+        </div>
       </div>
-      <!-- <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul> -->
-    </div>
-  </nav>
+    </nav>
 
-  <div class='col-md-4'></div>
-
-  <div class='col-md-4'>
     <div class="content">
-      <div ng-include="'user.html'"></div>
 
+      <div ng-include="'user.html'"></div>
+      
       <section id="display-if-logged-in" ng-controller='GroupController as groupCtrl' ng-show="userCtrl.loggedInStatus">
-        <span id='logged-in-as'> logged in as  {{userCtrl.userName}}</span>
-        <button id='logout' ng-click="userCtrl.logOut()">Log out</button>
+        <div class='log-container'>
+          <span id='logged-in-as'> logged in as  {{userCtrl.userName}}</span>
+          <button id='logout' ng-click="userCtrl.logOut()">Log out</button>
+        </div>
 
         <div ng-include="'group.html'"></div>
 
@@ -30,6 +26,6 @@
       </section>
     </div>
   </div>
-  <div class='col-md-4'></div>
+  <div class='col-md-3'></div>
 
 </body>
