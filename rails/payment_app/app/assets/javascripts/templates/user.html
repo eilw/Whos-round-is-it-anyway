@@ -1,8 +1,9 @@
-  <section id='access-options' ng-hide='userCtrl.isLoggedIn()'>
-    <section id='choose-action' ng-show="userCtrl.noOptionChosen()">
-      <button id='choose-signup' ng-click="userCtrl.chooseSignUp = true;">Sign up</button>
-      <button id='choose-login' ng-click="userCtrl.chooseLogIn = true;">Log in</button>
-    </section>
+<!-- <section id='access-options' ng-hide='userCtrl.isLoggedIn()'> -->
+<section id='access-options' ng-hide='userCtrl.loggedInStatus'>
+  <section id='choose-action' ng-show="userCtrl.noOptionChosen()">
+    <button id='choose-signup' ng-click="userCtrl.chooseSignUp = true;">Sign up</button>
+    <button id='choose-login' ng-click="userCtrl.chooseLogIn = true;">Log in</button>
+  </section>
 
   <section id='user-registration' ng-show="userCtrl.chooseSignUp">
     <form>

@@ -22,4 +22,8 @@ paymentApp.service('userDataService', ['$http', function($http) {
   self.logOut = function() {
     return $http.delete('/users/sign_out');
   };
+
+  self.checkSession = function() {
+    return $http.get('/session');
+  };
 }]);

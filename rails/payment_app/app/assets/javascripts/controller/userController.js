@@ -1,4 +1,4 @@
-paymentApp.controller('UserController', ['userDataService', function(userDataService){
+paymentApp.controller('UserController', ['userDataService' , function(userDataService){
 
   var self = this;
   self.chooseSignUp = false;
@@ -9,37 +9,45 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
   self.passwordConfirmation = "";
   self.userId;
   self.groupId;
-  self.loggedInStatus = false;
+  // self.loggedInStatus = false;
 
   self.noOptionChosen = function() {
     if (!self.chooseSignUp && !self.chooseLogIn) { return true; }
   };
 
   self.isLoggedIn = function(){
-    return self.loggedInStatus;
+     userDataService.checkSession()
+      .then(function(response) {
+        if (response.data.id === 0) {
+          self.loggedInStatus = false;
+        } else {
+          self.loggedInStatus = true;
+          self.userId = response.data.id;
+          self.userName = response.data.username;
+          self.groupId = response.data.groups[0].id;
+        }
+     });
   };
 
   self.signUp = function(){
     var user = { user: {username: self.userName, email: self.email, password: self.password, password_confirmation: self.passwordConfirmation } };
     userDataService.sendUserSignUp(user)
-    // .then(function(){
-    // });
-    self.loggedInStatus = true;
-    //  move into userDataService.sendUser once Rails integration has happened
+      .then(function(){
+        self.loggedInStatus = true;
+      });
   };
 
   self.logIn = function() {
     var user = {user: {email: self.email, password: self.password }};
     userDataService.sendUserLogIn(user).then(function(response){
-      console.log(response);
       self.userId = response.data.id;
       self.userName = response.data.username;
       self.groupId = response.data.groups[0].id;
+      self.loggedInStatus = true;
     }, function(response) {
       self.loggedInStatus = false;
       self.password = "";
     });
-    self.loggedInStatus = true;
   };
 
   self.logOut = function() {
@@ -48,4 +56,7 @@ paymentApp.controller('UserController', ['userDataService', function(userDataSer
       self.password = "";
     });
   };
+
+  self.isLoggedIn();
+
 }]);
