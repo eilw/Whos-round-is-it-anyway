@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  # def total
-  #   payments.sum(:total)
-  # end
+  def total_in_group(group)
+    payments.where(group: group.id).sum(:amount)
+  end
 end

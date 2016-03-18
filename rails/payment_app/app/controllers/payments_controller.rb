@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @payment = Payment.create(payment_params)
+    @group.payments.create(payment_params)
     @user = @group.current_payer
     render json: @user.as_json(only: [:id, :email, :username])
   end

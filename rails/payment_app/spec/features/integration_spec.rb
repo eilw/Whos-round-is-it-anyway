@@ -24,7 +24,7 @@ feature 'user flow test', js:true do
     fill_in('add-group-name', with: 'group1')
 
     expect(page).to have_content('simon sauder')
-    expect(page).to have_content('jimmy mac')=
+    expect(page).to have_content('jimmy mac')
 
     # find(".users", match: :first)
     # all(".users").each(&:click)
