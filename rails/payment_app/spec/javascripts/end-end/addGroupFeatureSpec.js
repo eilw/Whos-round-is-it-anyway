@@ -1,5 +1,4 @@
 describe("AddGroups", function() {
-  // var helpers = require('./helpers/helpers.js');
 
   var logIn = function() {
     browser.get("http://localhost:8000");

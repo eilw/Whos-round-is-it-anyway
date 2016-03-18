@@ -5,8 +5,6 @@ feature 'user flow test', js:true do
   scenario 'user flow test' do
     user1 = create(:user, email:'test1@email.com', username:'simon sauder')
     user2 = create(:user, email:'test2@email.com', username:'jimmy mac')
-    create(:payment, user: user1, amount: 10)
-    create(:payment, user: user2, amount: 13)
 
     visit '/'
     expect(page).not_to have_content('username')
@@ -24,20 +22,18 @@ feature 'user flow test', js:true do
     fill_in('add-group-name', with: 'group1')
 
     expect(page).to have_content('simon sauder')
-    expect(page).to have_content('jimmy mac')=
+    expect(page).to have_content('jimmy mac')
 
-    # find(".users", match: :first)
-    # all(".users").each(&:click)
-
-    click_link 'simon saunder'
-    click_link 'jimmy mac'
-    click_link 'User1'
-
+    find('.users', match: :first).click
     click_button('create-group')
     expect(page).to have_content('group1')
     expect(Group.count).to eq 1
-    find('#update-payer').click
-    expect(page).to have_content 'The current payer is... User1'
 
+    visit '/'
+    click_button('choose-login')
+    fill_in('email', with: 'user1@email.com')
+    fill_in('password', with: '12345678')
+    click_button('logIn')
+    # expect(page).to have_content('Welcome, User1')
   end
 end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :users, only: [:show, :index]
+  resources :session, only: [:index]
 
   resources :groups do
     get 'payer', on: :member

@@ -1,26 +1,21 @@
 describe('service: userDataService', function() {
 
-  var userData;
+  var userData, user;
 
   beforeEach(module('PaymentApp'));
 
-  beforeEach(inject(function(userDataService) {
+  beforeEach(inject(function(userDataService, $httpBackend) {
     userData = userDataService;
+    httpBackend = $httpBackend;
+    user = { user: {username: 'Test', email: 'test@email.com', password: 'password', password_confirmation: 'password'} };
   }));
 
   describe('signing up', function() {
-    beforeEach(inject(function($httpBackend) {
-      var user = {username: 'Test', email: 'test@email.com', password: 'password'};
-      httpBackend = $httpBackend;
-      httpBackend
-        .when('POST', '/users/create', user)
-        .respond(
-          { status: 200  }
-        );
-    }));
-
     it('responds to sendUserSignUp', function() {
-      var user = {username: 'Test', email: 'test@email.com', password: 'password'};
+      httpBackend
+        .when('POST', '/users', user)
+        .respond(
+          { status: 200  });
       userData.sendUserSignUp(user)
       .then(function(response){
         expect(response.status).toEqual(200);
@@ -31,18 +26,14 @@ describe('service: userDataService', function() {
 
   describe('logging in', function() {
     var responseUser = {};
-    var user = {email: 'test@email.com', password: 'password'};
-    beforeEach(inject(function($httpBackend) {
-      httpBackend = $httpBackend;
-      httpBackend
-        .when('POST', '/users/sign_in', user)
-        .respond(
-          { status: 200, data: responseUser }
-        );
-    }));
+    var user2 = {email: 'test@email.com', password: 'password'};
 
     it('responds to sendUserLogIn', function() {
-      userData.sendUserLogIn(user)
+      httpBackend
+        .when('POST', '/users/sign_in', user2)
+        .respond(
+          { status: 200, data: responseUser });
+      userData.sendUserLogIn(user2)
       .then(function(response){
         expect(response.status).toEqual(200);
         expect(response.data.data).toEqual(responseUser);
@@ -51,5 +42,32 @@ describe('service: userDataService', function() {
     });
   });
 
+  describe('#logOut', function() {
+    it('responds to logOut', function() {
+      httpBackend
+        .when('DELETE', '/users/sign_out')
+        .respond(
+          { status: 200  });
+      userData.logOut()
+      .then(function(response){
+        expect(response.status).toEqual(200);
+      });
+      httpBackend.flush();
+    });
+  });
+
+  describe('#checkSession', function() {
+    it('responds to checkSession', function() {
+      httpBackend
+        .when('GET', '/session')
+        .respond(
+          { status: 200  });
+      userData.checkSession()
+      .then(function(response){
+        expect(response.status).toEqual(200);
+      });
+      httpBackend.flush();
+    });
+  });
 
 });

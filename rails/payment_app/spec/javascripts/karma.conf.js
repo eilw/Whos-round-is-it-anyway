@@ -19,6 +19,7 @@ module.exports = function(config) {
       '../vendor/assets/bower_components/angular-route/angular-route.js',
       '../vendor/assets/bower_components/angular-resource/angular-resource.js',
       '../vendor/assets/bower_components/angular-mocks/angular-mocks.js',
+      '../vendor/assets/bower_components/angular-mocks/angular-templates.js',
       '../app/assets/javascripts/**/*.js',
       'javascripts/**/*.spec.js'
     ],
@@ -30,8 +31,14 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {},
+    preprocessors: {
+      '**/*.html': ['ng-html2js']
+    },
 
+    ngHtml2JsPreprocessor: {
+      // we want all templates to be loaded in the same module called 'templates'
+      moduleName: 'templates'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
