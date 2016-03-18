@@ -9,7 +9,7 @@ paymentApp.controller('UserController', ['userDataService' , function(userDataSe
   self.passwordConfirmation = "";
   self.userId;
   self.groupId;
-  // self.loggedInStatus = false;
+  self.loggedInStatus = false;
 
   self.noOptionChosen = function() {
     if (!self.chooseSignUp && !self.chooseLogIn) { return true; }
