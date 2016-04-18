@@ -21,7 +21,35 @@ I started the project with less than a week's experience of working with Angular
 
 #####What I learnt
 
-Besides the obvious (more experience in AngularJS, APIs and Git workflow), the short timeframe involved meant that I in retrospect would not have spent as much time with user authentification, but rather focused on the application's features - which is where the app's value lies.   
+Besides the obvious (more experience in AngularJS, APIs and Git workflow), the short timeframe involved meant that I in retrospect would not have spent as much time with user authentification, but rather focused on the application's features - which is where the app's value lies.
+
+#####User stories
+
+```
+As a user,
+So I can share costs with the right people,
+I want to create a payment group where I can invite people.
+```
+```
+As a user,
+So I can easily find the right people,
+I want to search for people to add to a group.
+```
+```
+As a user,
+So the groups knows whos turn it is,
+I want to find out who's paying next.
+```
+```
+As a user,
+So that my costs are split evenly in the group,
+I want to add how much I paid.
+```
+```
+As a user,
+So I feel reassured that only the right people have access to our group,
+I want to be able to sign up and login securely.
+```
 
 #####Technologies used
 
